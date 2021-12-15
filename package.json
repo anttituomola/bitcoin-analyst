@@ -12,5 +12,8 @@
     "Start"
   ],
   "author": "Antti Tuomola",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "dayjs": "^1.10.7"
+  }
 }
