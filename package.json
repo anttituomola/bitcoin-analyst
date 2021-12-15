@@ -9,11 +9,8 @@
   "keywords": [
     "Vincint",
     "Rising",
-    "Start"
+    "Star"
   ],
   "author": "Antti Tuomola",
-  "license": "ISC",
-  "dependencies": {
-    "dayjs": "^1.10.7"
-  }
+  "license": "ISC"
 }
