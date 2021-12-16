@@ -18,13 +18,20 @@ function handleSubmit() {
 //SORT INITIAL DATA
 function sortData(data) {
     const totalVolumes = data.total_volumes
-    console.log(totalVolumes)
     const prices = data.prices
-    const dateArray = []
-    const priceArray = []
-    
+
     //convert UNIX timestamps to human readable times
-    totalVolumes.map((hour) => {
+    let midnightVolumeDatapoints = extractMidnightDatapoints(totalVolumes)
+    let midnightValueDatapoints = extractMidnightDatapoints(prices)
+
+    findSalesPeakDate(midnightVolumeDatapoints)
+    longestDownfall(midnightValueDatapoints)
+
+}
+
+function extractMidnightDatapoints(dataPoints) {
+    const dateArray = []
+    dataPoints.map((hour) => {
         const individualDates = {}
         individualDates.date = dayjs(hour[0]).format("DD")
         individualDates.hour = dayjs(hour[0]).format("HH")
@@ -32,7 +39,7 @@ function sortData(data) {
         individualDates.timestamp = hour[0]
         individualDates.value = hour[1]
         dateArray.push(individualDates)
-    })    
+    })
 
     //group data by date
     let groupedByDate = dateArray.reduce((acc, value) => {
@@ -50,29 +57,33 @@ function sortData(data) {
     for (let day in groupedByDate) {
         firstInstances.push(groupedByDate[day][0])
     }
-
-    findSalesPeakDate(firstInstances)
-    longestDownfall(prices)
-
+    return firstInstances
 }
 
 //FIND LONGEST DOWNFALL
-function longestDownfall(prices) {
-
+function longestDownfall(data) {
+    console.log(data)
 }
 
 //FIND TRANSACTION PEAK DATE
 function findSalesPeakDate(data) {
     const firstInstances = data
     //sort dates by value
-    let sortedIntances = firstInstances.sort((a,b) => b.value - a.value)
+    let sortedIntances = firstInstances.sort((a, b) => b.value - a.value)
     const highestVolumeDay = sortedIntances[0]
 
     //render the results to the app
-    salesPeakEl.innerHTML= `
+    salesPeakEl.innerHTML = `
     <h3>Highest trading volume:</h3>
     <h1>${dayjs(highestVolumeDay.timestamp).format("DD.MM.YYYY")}</h1>
     <h3>Total trading volume:</h3>
     <p>${highestVolumeDay.value} euros</p>
     `
+}
+
+
+//TIME MACHINE
+function timeMachine() {
+    //https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
+    console.log("hello from the time machine!")
 }
