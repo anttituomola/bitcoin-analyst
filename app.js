@@ -4,10 +4,10 @@ const startDateEl = document.getElementById("startDateEl")
 const endDateEl = document.getElementById("endDateEl")
 
 function handleSubmit() {
-    const startDate = new Date(startDateEl.value)
-    const startDateTimestamp = Date.parse(startDate) / 1000
-    const endDate = new Date(endDateEl.value)
-    const endDateTimestamp = Date.parse(endDate) / 1000 + 3600
+    const startDate = dayjs(startDateEl.value)
+    const startDateTimestamp = dayjs(startDate) / 1000
+    const endDate = dayjs(endDateEl.value)
+    const endDateTimestamp = dayjs(endDate) / 1000 + 3600
 
     //fetch the data from Gecko API
     fetch(`https://api.coingecko.com/api/v3/coins/bitcoin/market_chart/range?vs_currency=eur&from=${startDateTimestamp}&to=${endDateTimestamp}`)
