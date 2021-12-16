@@ -1,4 +1,3 @@
-
 document.getElementById("submitBtn").addEventListener("click", handleSubmit)
 const startDateEl = document.getElementById("startDateEl")
 const endDateEl = document.getElementById("endDateEl")
@@ -13,16 +12,25 @@ function handleSubmit() {
     //fetch the data from Gecko API
     fetch(`https://api.coingecko.com/api/v3/coins/bitcoin/market_chart/range?vs_currency=eur&from=${startDateTimestamp}&to=${endDateTimestamp}`)
         .then(res => res.json())
-        .then(data => { findSalesPeakDate(data) })
+        .then(data => { sortData(data) })
+}
+
+//SORT INITIAL DATA
+function sortData(data) {
+    const totalVolumes = data.total_volumes
+    const prices = data.prices
+
+    //convert UNIX timestamps to human readable times
+    let midnightVolumeDatapoints = extractMidnightDatapoints(totalVolumes)
+    let midnightValueDatapoints = extractMidnightDatapoints(prices)
+
+    findSalesPeakDate(midnightVolumeDatapoints)
+    longestDownfall(midnightValueDatapoints)
 
 }
 
-function findSalesPeakDate(data) {
-    const totalVolumes = data.total_volumes
-    console.log(totalVolumes)
-    
-    //convert UNIX timestamps to human readable times
-    const dateArray = totalVolumes.map((hour) => {
+function extractMidnightDatapoints(dataPoints) {
+    const dateArray = dataPoints.map((hour) => {
         const individualDates = {}
         individualDates.date = dayjs(hour[0]).format("DD")
         individualDates.hour = dayjs(hour[0]).format("HH")
@@ -30,7 +38,8 @@ function findSalesPeakDate(data) {
         individualDates.timestamp = hour[0]
         individualDates.value = hour[1]
         return individualDates
-    })   
+    })
+
     //group data by date
     const groupedByDate = dateArray.reduce((acc, value) => {
         if (!acc[value.date]) {
@@ -41,17 +50,37 @@ function findSalesPeakDate(data) {
 
         return acc
     }, {})
-    //push first instances of each day to a new array
-   const firstHourDatapoints = Object.values(groupedByDate).map(dataPointsForDay => dataPointsForDay[0]);
 
-    //sort dates by value
-    const sortedIntances = firstHourDatapoints.sort((a,b) => b.value - a.value)
+    //push first instances of each day to a new array
+    const firstHourDatapoints = Object.values(groupedByDate).map(dataPointsForDay => dataPointsForDay[0]);
+
+    return firstHourDatapoints
+}
+
+//FIND LONGEST DOWNFALL
+function longestDownfall(data) {
+    console.log(data)
+}
+
+//FIND TRANSACTION PEAK DATE
+function findSalesPeakDate(data) {
+    const firstHourDatapoints = data
+    //sort dates by value + grab the highest
+    const sortedIntances = firstHourDatapoints.sort((a, b) => b.value - a.value)
     const highestVolumeDay = sortedIntances[0]
 
-    salesPeakEl.innerHTML= `
+    //render the results to the app
+    salesPeakEl.innerHTML = `
     <h3>Highest trading volume:</h3>
     <h1>${dayjs(highestVolumeDay.timestamp).format("DD.MM.YYYY")}</h1>
     <h3>Total trading volume:</h3>
     <p>${highestVolumeDay.value} euros</p>
     `
+}
+
+
+//TIME MACHINE
+function timeMachine() {
+    //https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
+    console.log("hello from the time machine!")
 }
