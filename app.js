@@ -19,20 +19,20 @@ function handleSubmit() {
 
 function findSalesPeakDate(data) {
     const totalVolumes = data.total_volumes
-    const dateArray = []
+    console.log(totalVolumes)
     
     //convert UNIX timestamps to human readable times
-    totalVolumes.map((hour) => {
+    const dateArray = totalVolumes.map((hour) => {
         const individualDates = {}
         individualDates.date = dayjs(hour[0]).format("DD")
         individualDates.hour = dayjs(hour[0]).format("HH")
         individualDates.min = dayjs(hour[0]).format("mm")
         individualDates.timestamp = hour[0]
         individualDates.value = hour[1]
-        dateArray.push(individualDates)
+        return individualDates
     })   
     //group data by date
-    let groupedByDate = dateArray.reduce((acc, value) => {
+    const groupedByDate = dateArray.reduce((acc, value) => {
         if (!acc[value.date]) {
             acc[value.date] = []
         }
@@ -41,17 +41,12 @@ function findSalesPeakDate(data) {
 
         return acc
     }, {})
-
     //push first instances of each day to a new array
-    let firstInstances = []
-    for (let day in groupedByDate) {
-        firstInstances.push(groupedByDate[day][0])
-    }
+   const firstHourDatapoints = Object.values(groupedByDate).map(dataPointsForDay => dataPointsForDay[0]);
 
     //sort dates by value
-    let sortedIntances = firstInstances.sort((a,b) => b.value - a.value)
+    const sortedIntances = firstHourDatapoints.sort((a,b) => b.value - a.value)
     const highestVolumeDay = sortedIntances[0]
-    console.log(highestVolumeDay)
 
     salesPeakEl.innerHTML= `
     <h3>Highest trading volume:</h3>
