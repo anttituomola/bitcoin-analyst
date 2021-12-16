@@ -40,6 +40,10 @@ function timestampToClock(data) {
 
         return acc
     }, {})
-    
-    console.log(groupedByDate)
+    //push first instances of each day to a new array
+    let firstInstances = []
+    for (let day in groupedByDate) {
+        firstInstances.push(groupedByDate[day][0])
+    }
+    console.log(firstInstances)
 }
