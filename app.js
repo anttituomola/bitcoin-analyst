@@ -13,18 +13,11 @@ function handleSubmit() {
     //fetch the data from Gecko API
     fetch(`https://api.coingecko.com/api/v3/coins/bitcoin/market_chart/range?vs_currency=eur&from=${startDateTimestamp}&to=${endDateTimestamp}`)
         .then(res => res.json())
-        .then(data => { findSalesPeakDate(data), longestDownfall(data) })
-
+        .then(data => { sortData(data) })
 }
 
-//FIND LONGEST DOWNFALL
-function longestDownfall(data) {
-    console.log(data)
-}
-
-//FIND TRANSACTION PEAK DATE
-function findSalesPeakDate(data) {
-    console.log(data)
+//SORT INITIAL DATA
+function sortData(data) {
     const totalVolumes = data.total_volumes
     const dateArray = []
     
@@ -55,6 +48,19 @@ function findSalesPeakDate(data) {
         firstInstances.push(groupedByDate[day][0])
     }
 
+    findSalesPeakDate(firstInstances)
+    longestDownfall(firstInstances)
+
+}
+
+//FIND LONGEST DOWNFALL
+function longestDownfall(data) {
+    console.log(data)
+}
+
+//FIND TRANSACTION PEAK DATE
+function findSalesPeakDate(data) {
+    const firstInstances = data
     //sort dates by value
     let sortedIntances = firstInstances.sort((a,b) => b.value - a.value)
     const highestVolumeDay = sortedIntances[0]
