@@ -1,4 +1,3 @@
-
 document.getElementById("submitBtn").addEventListener("click", handleSubmit)
 const startDateEl = document.getElementById("startDateEl")
 const endDateEl = document.getElementById("endDateEl")
@@ -19,7 +18,10 @@ function handleSubmit() {
 //SORT INITIAL DATA
 function sortData(data) {
     const totalVolumes = data.total_volumes
+    console.log(totalVolumes)
+    const prices = data.prices
     const dateArray = []
+    const priceArray = []
     
     //convert UNIX timestamps to human readable times
     totalVolumes.map((hour) => {
@@ -30,7 +32,8 @@ function sortData(data) {
         individualDates.timestamp = hour[0]
         individualDates.value = hour[1]
         dateArray.push(individualDates)
-    })   
+    })    
+
     //group data by date
     let groupedByDate = dateArray.reduce((acc, value) => {
         if (!acc[value.date]) {
@@ -49,13 +52,13 @@ function sortData(data) {
     }
 
     findSalesPeakDate(firstInstances)
-    longestDownfall(firstInstances)
+    longestDownfall(prices)
 
 }
 
 //FIND LONGEST DOWNFALL
-function longestDownfall(data) {
-    console.log(data)
+function longestDownfall(prices) {
+
 }
 
 //FIND TRANSACTION PEAK DATE
