@@ -3,6 +3,7 @@ const startDateEl = document.getElementById("startDateEl")
 const endDateEl = document.getElementById("endDateEl")
 const salesPeakEl = document.getElementById("salesPeakEl")
 const longestDownfallEl = document.getElementById("longestDownfallEl")
+const timeMachineEl = document.getElementById("timeMachineEl")
 
 function handleSubmit() {
     const startDate = dayjs(startDateEl.value)
@@ -27,6 +28,7 @@ function sortData(data) {
 
     findSalesPeakDate(midnightVolumeDatapoints)
     longestDownfall(midnightValueDatapoints)
+    timeMachine(midnightValueDatapoints)
 
 }
 
@@ -59,20 +61,12 @@ function extractMidnightDatapoints(dataPoints) {
 }
 
 //FIND LONGEST DOWNFALL
-/* function(array, target){
-    set a left pointer to the first element of the array
-    set a right pointer to the last element of the array
-    loop through the array; check if left and right add to target
-    sum is less than the target, increase left pointer
-    sum is greater than the target, decrease right pointer
-    once their sum equals the target, return their indices
-  } */
 function longestDownfall(data) {
     let A = 0
     let B = 0
     let currentMaxLength = 0
     while (B < data.length - 1) {
-        if (data[B].value > data[B+1].value) {
+        if (data[B].value > data[B + 1].value) {
             B++
             currentMaxLength = Math.max(currentMaxLength, B - A)
         } else {
@@ -84,7 +78,7 @@ function longestDownfall(data) {
 
     //render highest downfall to the app
     let postscript = ""
-    if(currentMaxLength>1) { 
+    if (currentMaxLength > 1) {
         postscript = "days in a row"
     } else {
         postscript = "day"
@@ -114,7 +108,28 @@ function findSalesPeakDate(data) {
 
 
 //TIME MACHINE
-function timeMachine() {
-    //https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
-    console.log("hello from the time machine!")
+function timeMachine(data) {
+    //sort data by date
+    const sortedIntances = data.sort((a,b) => a.timestamp - b.timestamp)
+
+    //Find the biggest difference in values within the timeframe
+    let min = 0
+    let max = 1
+    let difference = 0
+    let profits = 0
+    while(max < sortedIntances.length) {
+        difference = sortedIntances[max].value - sortedIntances[min].value
+        if(difference > profits) {profits = difference}
+        if(difference < 0) {min = max}
+        max++
+    }
+
+    //render the results to the app
+    timeMachineEl.innerHTML = `
+    <h3>Time Machine setup</h3>
+    <h1>Buy on ${dayjs(data[min].timestamp).format("DD.MM.YYYY")}</h1>
+    <h1>Sell on ${dayjs(data[max-1].timestamp).format("DD.MM.YYYY")}</h1>
+
+    `
+    
 }
