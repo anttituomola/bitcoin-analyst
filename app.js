@@ -68,13 +68,11 @@ function extractMidnightDatapoints(dataPoints) {
     once their sum equals the target, return their indices
   } */
 function longestDownfall(data) {
-    console.log(data)
     let A = 0
     let B = 0
     let currentMaxLength = 0
     while (B < data.length - 1) {
         if (data[B].value > data[B+1].value) {
-            console.log(data[B].value)
             B++
             currentMaxLength = Math.max(currentMaxLength, B - A)
         } else {
@@ -83,7 +81,6 @@ function longestDownfall(data) {
             currentMaxLength = Math.max(currentMaxLength, B - A)
         }
     }
-    console.log(A, B, currentMaxLength)
 
     //render highest downfall to the app
     let postscript = ""
