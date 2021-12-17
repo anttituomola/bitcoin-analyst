@@ -2,6 +2,7 @@ document.getElementById("submitBtn").addEventListener("click", handleSubmit)
 const startDateEl = document.getElementById("startDateEl")
 const endDateEl = document.getElementById("endDateEl")
 const salesPeakEl = document.getElementById("salesPeakEl")
+const longestDownfallEl = document.getElementById("longestDownfallEl")
 
 function handleSubmit() {
     const startDate = dayjs(startDateEl.value)
@@ -58,8 +59,44 @@ function extractMidnightDatapoints(dataPoints) {
 }
 
 //FIND LONGEST DOWNFALL
+/* function(array, target){
+    set a left pointer to the first element of the array
+    set a right pointer to the last element of the array
+    loop through the array; check if left and right add to target
+    sum is less than the target, increase left pointer
+    sum is greater than the target, decrease right pointer
+    once their sum equals the target, return their indices
+  } */
 function longestDownfall(data) {
     console.log(data)
+    let A = 0
+    let B = 0
+    let currentMaxLength = 0
+    while (B < data.length - 1) {
+        if (data[B].value > data[B+1].value) {
+            console.log(data[B].value)
+            B++
+            currentMaxLength = Math.max(currentMaxLength, B - A)
+        } else {
+            B++
+            A = B
+            currentMaxLength = Math.max(currentMaxLength, B - A)
+        }
+    }
+    console.log(A, B, currentMaxLength)
+
+    //render highest downfall to the app
+    let postscript = ""
+    if(currentMaxLength>1) { 
+        postscript = "days in a row"
+    } else {
+        postscript = "day"
+    }
+    longestDownfallEl.innerHTML = `
+    <h3>Longest downfall trend</h3>
+    <h1>${currentMaxLength}</h1>
+    <p>${postscript}</p>
+    `
 }
 
 //FIND TRANSACTION PEAK DATE
