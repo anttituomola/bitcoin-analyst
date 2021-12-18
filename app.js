@@ -15,3 +15,10 @@ function handleSubmit() {
         .then(res => res.json())
         .then(data => { dataSorter.sortData(data) })
 }
+
+//TODO
+//Switch to UTC tim
+//Styling
+//Handle searches over 90 days
+//Make sure no results under 2 days is returned
+//Add support for multiple coins?
