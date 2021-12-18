@@ -21,9 +21,9 @@ export default class DataSorter {
     extractMidnightDatapoints(dataPoints) {
         const dateArray = dataPoints.map((hour) => {
             const individualDates = {}
-            individualDates.date = dayjs(hour[0]).format("DD")
-            individualDates.hour = dayjs(hour[0]).format("HH")
-            individualDates.min = dayjs(hour[0]).format("mm")
+            individualDates.date = dayjs.utc(hour[0]).format("DD")
+            individualDates.hour = dayjs.utc(hour[0]).format("HH")
+            individualDates.min = dayjs.utc(hour[0]).format("mm")
             individualDates.timestamp = hour[0]
             individualDates.value = hour[1]
             return individualDates
@@ -42,7 +42,7 @@ export default class DataSorter {
 
         //push first instances of each day to a new array
         const firstHourDatapoints = Object.values(groupedByDate).map(dataPointsForDay => dataPointsForDay[0]);
-
+        console.log(firstHourDatapoints)
         return firstHourDatapoints
     }
 }

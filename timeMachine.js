@@ -19,8 +19,8 @@ export default function timeMachine(data) {
     //render the results to the app
     timeMachineEl.innerHTML = `
         <h3>Time Machine setup</h3>
-        <h1>Buy on ${dayjs(data[min].timestamp).format("DD.MM.YYYY")}</h1>
-        <h1>Sell on ${dayjs(data[max - 1].timestamp).format("DD.MM.YYYY")}</h1>
+        <h1>Buy on ${dayjs.utc(data[min].timestamp).format("DD.MM.YYYY")}</h1>
+        <h1>Sell on ${dayjs.utc(data[max - 1].timestamp).format("DD.MM.YYYY")}</h1>
         <p>Profits: ${Math.round(profits)} €</p>
         `
 
