@@ -4,6 +4,16 @@ const endDateEl = document.getElementById("endDateEl")
 import DataSorter from "./DataSorter.js"
 let dataSorter = new DataSorter()
 
+//listen for enter on input fields
+startDateEl.addEventListener("keypress", enter)
+endDateEl.addEventListener("keypress", enter)
+
+function enter(e) {
+    if (e.key === "Enter") {
+        handleSubmit()
+    }
+}
+
 function handleSubmit() {
     const startDate = dayjs.utc(startDateEl.value)
     const startDateTimestamp = dayjs.utc(startDate) / 1000
@@ -18,11 +28,11 @@ function handleSubmit() {
 }
 
 //TODO
-//Switch to UTC time: done
+//Listen for enter on both input fields
+//If no profits, tell that on Time Machine
 //Styling
-//Handle searches over 90 days: done
 //Make sure no results under 2 days is returned: it seems the data granularity stays the same even with single day searches?
 //Add support for multiple coins?
-//If no profits, tell that on Time Machine
-//Listen for enter on both input fields
 //validate data!
+//Handle searches over 90 days: done
+//Switch to UTC time: done
