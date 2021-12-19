@@ -1,8 +1,32 @@
 body {
     font-family: 'Montserrat', sans-serif;
+    background-color: #CEE5F2;
+}
+
+input {
+    border-radius: 0.25em;
+    border: 1px solid #637081;
+    padding: 1em;
+}
+
+button {
+    background-color: #536B78;
+    color: white;
+    border-radius: 0.25em;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #637081;
+}
+
+button:active {
+    transform: scale(0.98);
 }
 
 #container {
+    padding: 2em;
     max-width: 800px;
     display: flex;
     margin: 0 auto;
@@ -23,7 +47,8 @@ body {
 }
 
 .outputBox {
-    border: 1px solid grey;
+    background-color: #ACCBE1;
+    border: 1px solid #3C5268;
     padding: 1em;
     margin: 1em;
     border-radius: 0.25em;
