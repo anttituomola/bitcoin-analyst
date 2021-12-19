@@ -28,11 +28,13 @@ function handleSubmit() {
 }
 
 //TODO
-//Listen for enter on both input fields
 //If no profits, tell that on Time Machine
 //Styling
 //Make sure no results under 2 days is returned: it seems the data granularity stays the same even with single day searches?
 //Add support for multiple coins?
 //validate data!
+
+//DONE
 //Handle searches over 90 days: done
 //Switch to UTC time: done
+//Listen for enter on both input fields: done

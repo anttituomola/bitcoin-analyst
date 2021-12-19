@@ -1,5 +1,6 @@
 export default function timeMachine(data) {
     const timeMachineEl = document.getElementById("timeMachineEl")
+    console.log(data)
 
     //sort data by date
     const sortedIntances = data.sort((a, b) => a.timestamp - b.timestamp)
@@ -17,12 +18,19 @@ export default function timeMachine(data) {
     }
 
     //render the results to the app
-    timeMachineEl.innerHTML = `
-        <h3>Time Machine setup</h3>
-        <h1>Buy on ${dayjs.utc(data[min].timestamp).format("DD.MM.YYYY")}</h1>
-        <h1>Sell on ${dayjs.utc(data[max - 1].timestamp).format("DD.MM.YYYY")}</h1>
-        <p>Profits: ${Math.round(profits)} €</p>
-        `
+    if (profits) {
+        timeMachineEl.innerHTML = `
+            <h3>Time Machine setup</h3>
+            <h1>Buy on ${dayjs.utc(data[min].timestamp).format("DD.MM.YYYY")}</h1>
+            <h1>Sell on ${dayjs.utc(data[max - 1].timestamp).format("DD.MM.YYYY")}</h1>
+            <p>Profits: ${Math.round(profits)} €</p>
+            `
+    } else {
+        timeMachineEl.innerHTML = `
+            <h3>Time Machine setup</h3>
+            <p>Profits: Cancel the trip, no profits to be made for these dates.</p>
+            `
+    }
 
 }
 
