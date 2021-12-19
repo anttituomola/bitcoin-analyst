@@ -5,19 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bitcoin Analyst</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div id="container">
+        <h1>Bitcoin Analyst for Mr. McDuck</h1>
         <div id="input">
-            <h1>Bitcoin Analyst for Mr. McDuck</h1>
             <input type="date" id="startDateEl" value="2021-05-19" />
             <input type="date" id="endDateEl" value="2021-05-21" />
             <button id="submitBtn">COUNT</button>
         </div>
-        <div id="Output">
-            <div id="longestDownfallEl"></div>
-            <div id="salesPeakEl"></div>
-            <div id="timeMachineEl"></div>
+        <div id="output">
+            <div class="outputBox-hide" id="longestDownfallEl"></div>
+            <div class="outputBox-hide" id="salesPeakEl"></div>
+            <div class="outputBox-hide" id="timeMachineEl"></div>
         </div>
     </div>
 

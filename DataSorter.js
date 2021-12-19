@@ -9,8 +9,6 @@ export default class DataSorter {
         const prices = data.prices
 
         if (amountOfDays >= 90) {
-            console.log("90 or more!")
-            console.log(data)
             let volumeDataPoints = this.sortDataByDate(data.total_volumes)
             let valueDataPoints = this.sortDataByDate(data.prices)
 
@@ -20,13 +18,11 @@ export default class DataSorter {
         } else {
             let midnightVolumeDatapoints = this.sortDataByDate(totalVolumes)
             let midnightValueDatapoints = this.sortDataByDate(prices)
-    
+
             findSalesPeakDate(midnightVolumeDatapoints)
             longestDownfall(midnightValueDatapoints)
             timeMachine(midnightValueDatapoints)
         }
-
-
     }
 
     sortDataByDate(dataPoints) {

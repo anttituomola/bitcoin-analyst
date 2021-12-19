@@ -1,6 +1,5 @@
 export default function timeMachine(data) {
     const timeMachineEl = document.getElementById("timeMachineEl")
-    console.log(data)
 
     //sort data by date
     const sortedIntances = data.sort((a, b) => a.timestamp - b.timestamp)

@@ -21,6 +21,10 @@ function handleSubmit() {
     const endDateTimestamp = dayjs.utc(endDate) / 1000
     const amountOfDays = endDate.diff(startDate, "day")
 
+    //add class to results fields
+    const results = document.getElementsByClassName("outputBox-hide")
+    Object.values(results).forEach(el => el.classList.add("outputBox"))
+
     //fetch the data from Gecko API
     fetch(`https://api.coingecko.com/api/v3/coins/bitcoin/market_chart/range?vs_currency=eur&from=${startDateTimestamp}&to=${endDateTimestamp}`)
         .then(res => res.json())
@@ -28,7 +32,6 @@ function handleSubmit() {
 }
 
 //TODO
-//If no profits, tell that on Time Machine
 //Styling
 //Make sure no results under 2 days is returned: it seems the data granularity stays the same even with single day searches?
 //Add support for multiple coins?
@@ -38,3 +41,4 @@ function handleSubmit() {
 //Handle searches over 90 days: done
 //Switch to UTC time: done
 //Listen for enter on both input fields: done
+//If no profits, tell that on Time Machine: done
