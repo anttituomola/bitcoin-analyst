@@ -1,8 +1,14 @@
 document.getElementById("submitBtn").addEventListener("click", handleSubmit)
 const startDateEl = document.getElementById("startDateEl")
 const endDateEl = document.getElementById("endDateEl")
+
 import DataSorter from "./DataSorter.js"
 let dataSorter = new DataSorter()
+
+//set initial values to input fields
+startDateEl.value = dayjs().add(-7, "day").format("YYYY-MM-DD")
+endDateEl.value = dayjs().format("YYYY-MM-DD")
+
 
 //listen for enter on input fields
 startDateEl.addEventListener("keypress", enter)
