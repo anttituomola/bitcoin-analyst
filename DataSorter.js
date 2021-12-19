@@ -4,24 +4,35 @@ import longestDownfall from "./longestDownfall.js"
 
 export default class DataSorter {
     //SORT INITIAL DATA
-    sortData(data) {
+    sortData(data, amountOfDays) {
         const totalVolumes = data.total_volumes
         const prices = data.prices
 
-        //convert UNIX timestamps to human readable times
-        let midnightVolumeDatapoints = this.extractMidnightDatapoints(totalVolumes)
-        let midnightValueDatapoints = this.extractMidnightDatapoints(prices)
+        if (amountOfDays >= 90) {
+            console.log("90 or more!")
+            console.log(data)
+            let volumeDataPoints = this.sortDataByDate(data.total_volumes)
+            let valueDataPoints = this.sortDataByDate(data.prices)
 
-        findSalesPeakDate(midnightVolumeDatapoints)
-        longestDownfall(midnightValueDatapoints)
-        timeMachine(midnightValueDatapoints)
+            findSalesPeakDate(volumeDataPoints)
+            longestDownfall(valueDataPoints)
+            timeMachine(valueDataPoints)
+        } else {
+            let midnightVolumeDatapoints = this.sortDataByDate(totalVolumes)
+            let midnightValueDatapoints = this.sortDataByDate(prices)
+    
+            findSalesPeakDate(midnightVolumeDatapoints)
+            longestDownfall(midnightValueDatapoints)
+            timeMachine(midnightValueDatapoints)
+        }
+
 
     }
 
-    extractMidnightDatapoints(dataPoints) {
+    sortDataByDate(dataPoints) {
         const dateArray = dataPoints.map((hour) => {
             const individualDates = {}
-            individualDates.date = dayjs.utc(hour[0]).format("DD")
+            individualDates.date = dayjs.utc(hour[0]).format("DD.MM.YYYY")
             individualDates.hour = dayjs.utc(hour[0]).format("HH")
             individualDates.min = dayjs.utc(hour[0]).format("mm")
             individualDates.timestamp = hour[0]
@@ -42,7 +53,6 @@ export default class DataSorter {
 
         //push first instances of each day to a new array
         const firstHourDatapoints = Object.values(groupedByDate).map(dataPointsForDay => dataPointsForDay[0]);
-        console.log(firstHourDatapoints)
         return firstHourDatapoints
     }
 }

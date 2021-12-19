@@ -2,6 +2,7 @@ const salesPeakEl = document.getElementById("salesPeakEl")
 
 //FIND TRANSACTION PEAK DATE
 export default function findSalesPeakDate(data) {
+    console.log(data)
     const firstHourDatapoints = data
     //sort dates by value + grab the highest
     const sortedIntances = firstHourDatapoints.sort((a, b) => b.value - a.value)
