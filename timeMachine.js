@@ -7,11 +7,13 @@ export default function timeMachine(data) {
     //Find the biggest difference in values within the timeframe
     let min = 0
     let max = 1
+    let lowestIndex
+    let highestIndex
     let difference = 0
     let profits = 0
     while (max < sortedIntances.length) {
         difference = sortedIntances[max].value - sortedIntances[min].value
-        if (difference > profits) { profits = difference }
+        if (difference > profits) { profits = difference, lowestIndex = min, highestIndex = max }
         if (difference < 0) { min = max }
         max++
     }
@@ -20,8 +22,8 @@ export default function timeMachine(data) {
     if (profits) {
         timeMachineEl.innerHTML = `
             <h3>Time Machine setup</h3>
-            <h1>Buy on ${dayjs.utc(data[min].timestamp).format("DD.MM.YYYY")}</h1>
-            <h1>Sell on ${dayjs.utc(data[max - 1].timestamp).format("DD.MM.YYYY")}</h1>
+            <h1>Buy on ${dayjs.utc(data[lowestIndex].timestamp).format("DD.MM.YYYY")}</h1>
+            <h1>Sell on ${dayjs.utc(data[highestIndex - 1].timestamp).format("DD.MM.YYYY")}</h1>
             <p>Profits: ${Math.round(profits)} €</p>
             `
     } else {

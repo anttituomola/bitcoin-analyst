@@ -34,15 +34,15 @@ function handleSubmit() {
     //fetch the data from Gecko API
     fetch(`https://api.coingecko.com/api/v3/coins/bitcoin/market_chart/range?vs_currency=eur&from=${startDateTimestamp}&to=${endDateTimestamp}`)
         .then(res => res.json())
-        .then(data => { dataSorter.sortData(data, amountOfDays) })
+        .then(data => { dataSorter.sortData(data, amountOfDays)})
 }
 
 //TODO
-//animations
+//validate data!: longest downfall seems to be always at max 8
+//return an error if there's no data available
 //raw data option: show the full data
 //Make sure no results under 2 days is returned: it seems the data granularity stays the same even with single day searches?
 //Add support for multiple coins?
-//validate data!
 
 //DONE
 //Handle searches over 90 days: done
@@ -51,3 +51,4 @@ function handleSubmit() {
 //If no profits, tell that on Time Machine: done
 //mobile optimization: done
 //Styling: done
+//animations: done

@@ -49,6 +49,7 @@ export default class DataSorter {
 
         //push first instances of each day to a new array
         const firstHourDatapoints = Object.values(groupedByDate).map(dataPointsForDay => dataPointsForDay[0]);
+        console.log(firstHourDatapoints)
         return firstHourDatapoints
     }
 }
