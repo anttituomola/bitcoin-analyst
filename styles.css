@@ -1,3 +1,4 @@
+/* MAIN STYLES */
 body {
     font-family: 'Montserrat', sans-serif;
     background-color: #CEE5F2;
@@ -53,4 +54,16 @@ button:active {
     margin: 1em;
     border-radius: 0.25em;
     width: 30%;
+}
+
+/* MOBILE OPTIMISATION */
+@media (max-width: 600px) {
+    #output {
+        flex-direction: column;
+    }
+    .outputBox {
+        width: 90%;
+        margin: 0;
+        margin-bottom: 0.25em;
+    }
 }

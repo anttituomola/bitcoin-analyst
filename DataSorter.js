@@ -36,7 +36,7 @@ export default class DataSorter {
             return individualDates
         })
 
-        //group data by date
+        //group data by date (soon we can replace this with dateArray.groupBy(({ date }) => date);)
         const groupedByDate = dateArray.reduce((acc, value) => {
             if (!acc[value.date]) {
                 acc[value.date] = []
