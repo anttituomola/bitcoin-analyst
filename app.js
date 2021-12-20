@@ -38,10 +38,8 @@ function handleSubmit() {
 }
 
 //TODO
-//Styling
 //animations
 //raw data option: show the full data
-//mobile optimization
 //Make sure no results under 2 days is returned: it seems the data granularity stays the same even with single day searches?
 //Add support for multiple coins?
 //validate data!
@@ -51,3 +49,5 @@ function handleSubmit() {
 //Switch to UTC time: done
 //Listen for enter on both input fields: done
 //If no profits, tell that on Time Machine: done
+//mobile optimization: done
+//Styling: done
