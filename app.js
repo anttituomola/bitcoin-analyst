@@ -33,12 +33,18 @@ function handleSubmit() {
 
     //fetch the data from Gecko API
     fetch(`https://api.coingecko.com/api/v3/coins/bitcoin/market_chart/range?vs_currency=eur&from=${startDateTimestamp}&to=${endDateTimestamp}`)
-        .then(res => res.json())
+        .then(res => {
+            if (res.ok) {
+                return res.json()
+            } else {
+                Object.values(results).forEach(el => el.classList.add("outputBox-hide"))
+                throw new Error("Hmm... there's something fishy going on here.")
+            }
+        })
         .then(data => { dataSorter.sortData(data, amountOfDays)})
 }
 
 //TODO
-//validate data!: longest downfall seems to be always at max 8
 //return an error if there's no data available
 //raw data option: show the full data
 //Make sure no results under 2 days is returned: it seems the data granularity stays the same even with single day searches?
@@ -52,3 +58,4 @@ function handleSubmit() {
 //mobile optimization: done
 //Styling: done
 //animations: done
+//validate data!: longest downfall seems to be always at max 9, and that's how it is, apparently: done

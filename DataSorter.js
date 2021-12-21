@@ -48,8 +48,16 @@ export default class DataSorter {
         }, {})
 
         //push first instances of each day to a new array
+        const results = document.getElementsByClassName("outputBox")
         const firstHourDatapoints = Object.values(groupedByDate).map(dataPointsForDay => dataPointsForDay[0]);
-        console.log(firstHourDatapoints)
-        return firstHourDatapoints
+        if(firstHourDatapoints.length > 0) {
+            console.log(firstHourDatapoints)
+            Object.values(results).forEach(el => el.classList.remove("outputBox-none"))
+            return firstHourDatapoints
+        } else {
+            Object.values(results).forEach(el => el.classList.add("outputBox-none"))
+            alert("check your dates")
+            throw new Error("There might be something unbitcoiny with your dates")
+        }
     }
 }
