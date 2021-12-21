@@ -2,7 +2,7 @@ document.getElementById("submitBtn").addEventListener("click", handleSubmit)
 const startDateEl = document.getElementById("startDateEl")
 const endDateEl = document.getElementById("endDateEl")
 
-import DataSorter from "./DataSorter.js"
+import DataSorter from "./components/DataSorter.js"
 let dataSorter = new DataSorter()
 
 //set initial values to input fields
@@ -45,7 +45,6 @@ function handleSubmit() {
 }
 
 //TODO
-//return an error if there's no data available
 //raw data option: show the full data
 //Make sure no results under 2 days is returned: it seems the data granularity stays the same even with single day searches?
 //Add support for multiple coins?
@@ -59,3 +58,4 @@ function handleSubmit() {
 //Styling: done
 //animations: done
 //validate data!: longest downfall seems to be always at max 9, and that's how it is, apparently: done
+//return an error if there's no data available: done
