@@ -1,8 +1,8 @@
-# coinAnalytics
+# Bitcoin Analyst tool
 
 This is an projetct to participate to Vincint's <a href="https://vincit.fi/risingstar/">Rising Star program</a>. The app is a analyst tool for Bitcoin value and transaction volumes. The data is from <a href="https://www.coingecko.com/api/documentations/v3#/coins/get_coins__id__market_chart_range">CoinGecko</a>. The app tries to follow <a href="https://vincit.fi/risingstar/Vincit-Rising-Star-2021-Pre-assignment.pdf">the guidelines</a> from Vincint.
 
-<h2>Install</h2>
+<h2>INSTALL</h2>
 Just clone the repo. There's no dependencies, so no installation is needed.
 
 <h2>DEMO</h2>
