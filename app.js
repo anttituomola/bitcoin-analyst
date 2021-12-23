@@ -45,9 +45,17 @@ function handleSubmit() {
 }
 
 //TODO
+//Edit readme: add steps to run (clone, open in browser)
+//also check the end date: is it valid?
+//Linting!
+//Harmonise the two sliding-window algoriths
+//Change all functions to class (methods), and separate the rendering parts as individual methods: this also adds testability.
 //raw data option: show the full data
+//Add tests!: https://titanwolf.org/Network/Articles/Article?AID=5bb2e66a-ddb9-4e6e-ba02-a2aa686bc6c6
+//switch from innerHTML to textContent for safety reasons?
 //Make sure no results under 2 days is returned: it seems the data granularity stays the same even with single day searches?
 //Add support for multiple coins?
+//validate data!: https://coinmarketcap.com/currencies/bitcoin/historical-data/
 
 //DONE
 //Handle searches over 90 days: done
@@ -57,5 +65,4 @@ function handleSubmit() {
 //mobile optimization: done
 //Styling: done
 //animations: done
-//validate data!: longest downfall seems to be always at max 9, and that's how it is, apparently: done
 //return an error if there's no data available: done

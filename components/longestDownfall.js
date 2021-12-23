@@ -12,7 +12,6 @@ export default function longestDownfall(data) {
         } else {
             B++
             A = B
-            currentMaxLength = Math.max(currentMaxLength, B - A)
         }
     }
 
@@ -23,6 +22,8 @@ export default function longestDownfall(data) {
     } else {
         postscript = "day"
     }
+
+    //Not the safest way to do this, but the simplest as I'm not suppose to use frameworks
     longestDownfallEl.innerHTML = `
     <h3>Longest downfall trend</h3>
     <h1>${currentMaxLength}</h1>
