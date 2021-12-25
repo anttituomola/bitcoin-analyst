@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 document.getElementById("submitBtn").addEventListener("click", handleSubmit)
 const startDateEl = document.getElementById("startDateEl")
 const endDateEl = document.getElementById("endDateEl")
@@ -8,7 +9,6 @@ let dataSorter = new DataSorter()
 //set initial values to input fields
 startDateEl.value = dayjs().add(-7, "day").format("YYYY-MM-DD")
 endDateEl.value = dayjs().format("YYYY-MM-DD")
-
 
 //listen for enter on input fields
 startDateEl.addEventListener("keypress", enter)
@@ -21,6 +21,16 @@ function enter(e) {
 }
 
 function handleSubmit() {
+    //make sure end date is not in future or too far in the past (28.04.2013)
+    if (dayjs(endDateEl.value) > dayjs().add(2, "hour")) {
+        alert("That's future, you fool! Will adjust to current realm.")
+        endDateEl.value = dayjs().add(1, "hour").format("YYYY-MM-DD")
+    }
+
+    if (dayjs(startDateEl.value) < dayjs("2013-04-28")) {
+        alert("That's too far in Bitcoin history, setting the date to earliet possible date.")
+        startDateEl.value = dayjs("2013-04-28").format("YYYY-MM-DD")
+    }
     const startDate = dayjs.utc(startDateEl.value)
     const startDateTimestamp = dayjs.utc(startDate) / 1000
     const endDate = dayjs.utc(endDateEl.value).add(1, "hour")
@@ -45,9 +55,7 @@ function handleSubmit() {
 }
 
 //TODO
-//Edit readme: add steps to run (clone, open in browser)
 //also check the end date: is it valid?
-//Linting!
 //Harmonise the two sliding-window algoriths
 //Change all functions to class (methods), and separate the rendering parts as individual methods: this also adds testability.
 //raw data option: show the full data
@@ -56,6 +64,8 @@ function handleSubmit() {
 //Make sure no results under 2 days is returned: it seems the data granularity stays the same even with single day searches?
 //Add support for multiple coins?
 //validate data!: https://coinmarketcap.com/currencies/bitcoin/historical-data/
+//remove eslint and pacgage.json before release
+//update live demo
 
 //DONE
 //Handle searches over 90 days: done
@@ -66,3 +76,5 @@ function handleSubmit() {
 //Styling: done
 //animations: done
 //return an error if there's no data available: done
+//Edit readme: add steps to run (clone, open in browser)
+//Linting!: done

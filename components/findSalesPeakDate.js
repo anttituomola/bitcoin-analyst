@@ -11,7 +11,7 @@ export default function findSalesPeakDate(data) {
     salesPeakEl.innerHTML = `
     <h3>Highest trading volume:</h3>
     <h1>${dayjs.utc(highestVolumeDay.timestamp).format("DD.MM.YYYY")}</h1>
-    <h3>Total trading volume:</h3>
+    <p>On that day:</p>
     <p>${Math.round(highestVolumeDay.value)} €</p>
     `
 }
