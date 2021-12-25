@@ -6,7 +6,7 @@ export default function timeMachine(data) {
 
     //Find the biggest difference in values within the timeframe
     let min = 0
-    let max = 1
+    let max = 1     
     let buyDateIndex
     let sellDateIndex
     let difference = 0
@@ -18,7 +18,9 @@ export default function timeMachine(data) {
             buyDateIndex = min
             sellDateIndex = max 
         }
-        if (difference < 0) { min = max }
+        if (difference < 0) { 
+            min = max 
+        }
         max++
     }
 

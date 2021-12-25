@@ -2,17 +2,16 @@
 const longestDownfallEl = document.getElementById("longestDownfallEl")
 
 export default function longestDownfall(data) {
-    let A = 0
-    let B = 0
+    let min = 0
+    let max = 0
     let currentMaxLength = 0
-    while (B < data.length - 1) {
-        if (data[B].value > data[B + 1].value) {
-            B++
-            currentMaxLength = Math.max(currentMaxLength, B - A)
+    while (max < data.length - 1) {
+        if (data[max].value > data[max + 1].value) {
+            currentMaxLength = Math.max(currentMaxLength, max - min)
         } else {
-            B++
-            A = B
+            min = max
         }
+        max++
     }
 
     //render highest downfall to the app

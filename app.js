@@ -55,14 +55,11 @@ function handleSubmit() {
 }
 
 //TODO
-//also check the end date: is it valid?
-//Harmonise the two sliding-window algoriths
-//Change all functions to class (methods), and separate the rendering parts as individual methods: this also adds testability.
+//Change all functions to class (methods), and separate the rendering parts as individual methods: this also improves testability.
 //raw data option: show the full data
 //Add tests!: https://titanwolf.org/Network/Articles/Article?AID=5bb2e66a-ddb9-4e6e-ba02-a2aa686bc6c6
 //switch from innerHTML to textContent for safety reasons?
 //Make sure no results under 2 days is returned: it seems the data granularity stays the same even with single day searches?
-//Add support for multiple coins?
 //validate data!: https://coinmarketcap.com/currencies/bitcoin/historical-data/
 //remove eslint and pacgage.json before release
 //update live demo
@@ -78,3 +75,5 @@ function handleSubmit() {
 //return an error if there's no data available: done
 //Edit readme: add steps to run (clone, open in browser)
 //Linting!: done
+//also check the end date: is it valid? DONE
+//Harmonise the two sliding-window algoriths
