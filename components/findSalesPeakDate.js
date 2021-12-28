@@ -1,7 +1,4 @@
 
-/* eslint-disable no-undef */
-
-const salesPeakEl = document.getElementById("salesPeakEl")
 
 //FIND TRANSACTION PEAK DATE
 export default class FindSalesPeakDate {
@@ -10,8 +7,9 @@ export default class FindSalesPeakDate {
         //sort dates by value + grab the highest
         const sortedIntances = firstHourDatapoints.sort((a, b) => b.value - a.value)
         const highestVolumeDay = sortedIntances[0]
-    
+        
         //render the results to the app
+        const salesPeakEl = document.getElementById("salesPeakEl")
         salesPeakEl.innerHTML = `
         <h3>Highest trading volume:</h3>
         <h1>${dayjs.utc(highestVolumeDay.timestamp).format("DD.MM.YYYY")}</h1>

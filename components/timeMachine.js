@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 export default class TimeMachine {
     constructor() {
         this.render = this.render.bind(this)

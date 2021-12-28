@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import TimeMachine from "./TimeMachine.js"
 import FindSalesPeakDate from "./FindSalesPeakDate.js"
 import LongestDownfall from "./LongestDownfall.js"
@@ -10,8 +9,8 @@ export default class DataSorter {
         const prices = data.prices
 
         if (amountOfDays >= 90) {
-            let volumeDataPoints = this.sortDataByDate(data.total_volumes)
-            let valueDataPoints = this.sortDataByDate(data.prices)
+            let volumeDataPoints = this.sortDataByDate(totalVolumes)
+            let valueDataPoints = this.sortDataByDate(prices)
 
             FindSalesPeakDate.findSalesPeakDate(volumeDataPoints)
             LongestDownfall.longestDownfall(valueDataPoints)
@@ -51,7 +50,8 @@ export default class DataSorter {
         //push first instances of each day to a new array
         const results = document.getElementsByClassName("outputBox")
         const firstHourDatapoints = Object.values(groupedByDate).map(dataPointsForDay => dataPointsForDay[0]);
-        if(firstHourDatapoints.length > 0) {
+        //check if there's data available
+        if (firstHourDatapoints.length > 0) {
             console.log(firstHourDatapoints)
             Object.values(results).forEach(el => el.classList.remove("outputBox-none"))
             return firstHourDatapoints
