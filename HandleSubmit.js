@@ -22,11 +22,13 @@ export default class HandleSubmit {
             alert("That's future, you fool! Will adjust to current realm.")
             endDateEl.value = dayjs().add(1, "hour").format("YYYY-MM-DD")
         }
-        // ...too far in the past (28.04.2013)
+        // ...too far in the past (before 28.04.2013)
         if (dayjs(startDateEl.value) < dayjs("2013-04-28")) {
             alert("That's too far in Bitcoin history, setting the date to earliet possible date.")
             startDateEl.value = dayjs("2013-04-28").format("YYYY-MM-DD")
         }
+
+        //get and format data for the API call
         const startDate = dayjs.utc(startDateEl.value)
         const startDateTimestamp = dayjs.utc(startDate) / 1000
         const endDate = dayjs.utc(endDateEl.value).add(1, "hour")

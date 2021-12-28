@@ -15,9 +15,8 @@ document.getElementById("endDateEl").addEventListener("keypress", handler.enter)
 //Why do I need static in front of class methods?
 
 //TODO
-//Change all functions to class (methods), and separate the rendering parts as individual methods: this also improves testability.
-//raw data option: show the full data
 //Add tests!: https://titanwolf.org/Network/Articles/Article?AID=5bb2e66a-ddb9-4e6e-ba02-a2aa686bc6c6
+//raw data option: show the full data
 //Make sure no results under 2 days is returned: it seems the data granularity stays the same even with single day searches?
 //validate data!: https://coinmarketcap.com/currencies/bitcoin/historical-data/
 //remove eslint and pacgage.json before release
@@ -37,3 +36,4 @@ document.getElementById("endDateEl").addEventListener("keypress", handler.enter)
 //also check the end date: is it valid? DONE
 //Harmonise the two sliding-window algoriths
 //switch from innerHTML to textContent for safety reasons?: not in this project
+//Change all functions to class (methods), and separate the rendering parts as individual methods: this also improves testability.: DONE
