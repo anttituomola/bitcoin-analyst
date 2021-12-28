@@ -1,6 +1,7 @@
+/* eslint-disable no-undef */
 import timeMachine from "./timeMachine.js"
 import findSalesPeakDate from "./findSalesPeakDate.js"
-import longestDownfall from "./longestDownfall.js"
+import LongestDownfall from "./LongestDownfall.js"
 
 export default class DataSorter {
     //SORT INITIAL DATA
@@ -13,14 +14,14 @@ export default class DataSorter {
             let valueDataPoints = this.sortDataByDate(data.prices)
 
             findSalesPeakDate(volumeDataPoints)
-            longestDownfall(valueDataPoints)
+            LongestDownfall.longestDownfall(valueDataPoints)
             timeMachine(valueDataPoints)
         } else {
             let midnightVolumeDatapoints = this.sortDataByDate(totalVolumes)
             let midnightValueDatapoints = this.sortDataByDate(prices)
 
             findSalesPeakDate(midnightVolumeDatapoints)
-            longestDownfall(midnightValueDatapoints)
+            LongestDownfall.longestDownfall(midnightValueDatapoints)
             timeMachine(midnightValueDatapoints)
         }
     }

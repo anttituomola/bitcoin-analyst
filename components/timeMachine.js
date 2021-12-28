@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 export default function timeMachine(data) {
     const timeMachineEl = document.getElementById("timeMachineEl")
 
@@ -26,6 +27,7 @@ export default function timeMachine(data) {
 
     //render the results to the app
     if (profits) {
+        //Not the safest way to do this, but the simplest as I'm not using frameworks
         timeMachineEl.innerHTML = `
             <h3>Time Machine setup</h3>
             <h1>Buy on ${dayjs.utc(data[buyDateIndex].timestamp).format("DD.MM.YYYY")}</h1>
@@ -33,6 +35,7 @@ export default function timeMachine(data) {
             <p>Profits: ${Math.round(profits)} €</p>
             `
     } else {
+        //Not the safest way to do this, but the simplest as I'm not using frameworks
         timeMachineEl.innerHTML = `
             <h3>Time Machine setup</h3>
             <p>Profits: Cancel the trip, no profits to be made for these dates.</p>
