@@ -5,6 +5,7 @@ export default class FindSalesPeakDate {
     constructor() {
         this.render = this.render.bind(this)
     }
+    
     static findSalesPeakDate(data) {
         const firstHourDatapoints = data
         //sort dates by value + grab the highest

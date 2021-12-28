@@ -13,13 +13,16 @@ export default class HandleSubmit {
     }
     
     handleSubmit() {
+        const startDateEl = document.getElementById("startDateEl")
+        const endDateEl = document.getElementById("endDateEl")
         let dataSorter = new DataSorter()
-        //make sure end date is not in future or too far in the past (28.04.2013)
+
+        //make sure end date is not in future or...
         if (dayjs(endDateEl.value) > dayjs().add(2, "hour")) {
             alert("That's future, you fool! Will adjust to current realm.")
             endDateEl.value = dayjs().add(1, "hour").format("YYYY-MM-DD")
         }
-        
+        // ...too far in the past (28.04.2013)
         if (dayjs(startDateEl.value) < dayjs("2013-04-28")) {
             alert("That's too far in Bitcoin history, setting the date to earliet possible date.")
             startDateEl.value = dayjs("2013-04-28").format("YYYY-MM-DD")
