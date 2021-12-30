@@ -44,7 +44,7 @@ export default class TimeMachine {
             //Not the safest way to do this, but the simplest as I'm not using frameworks
             timeMachineEl.innerHTML = `
                     <h3>Time Machine setup</h3>
-                    <p>Profits: Cancel the trip, no profits to be made for these dates.</p>
+                    <p>Cancel the trip, no profits to be made for these dates.</p>
                     `
         }
 
