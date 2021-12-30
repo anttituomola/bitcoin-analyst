@@ -21,4 +21,5 @@ There's a <a href="https://anttituomola.fi/bitcoin-analyst/">live demo</a> avail
   <li>ES6 classes & methods</li>
   <li>Optimised also for smaller screens</li>
   <li>Dark theme available</li>
+  <li>Easy to extend: everything is separated, so a new feature can be created with a new class and a single call</li>
 </ul>
