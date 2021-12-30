@@ -4,6 +4,24 @@ body {
     background-color: #CEE5F2;
 }
 
+/* DARK THEME */
+body.dark-theme {
+    background-color: #343A40;
+    color: #ADB5BD;
+}
+
+body.dark-theme .outputBox {
+    background-color: #212529;
+}
+
+body.dark-theme input {
+    background-color: #CED4DA;
+}
+
+body.dark-theme p {
+    color: #6C757D;
+}
+
 input {
     border-radius: 0.25em;
     border: 1px solid #637081;
@@ -66,6 +84,17 @@ button:active {
 
 .outputBox-none {
     display: none;
+}
+
+#themeChanger {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#themeChangerImg {
+    max-width: 20px;
+    padding: 0.5em;
+    cursor: pointer;
 }
 
 /* MOBILE OPTIMISATION */

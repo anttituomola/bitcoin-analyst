@@ -38,14 +38,14 @@ export default class DataSorter {
             return acc
         }, {})
 
-        //push first instances of each day to a new array
+        //push first instances of each day to a new array (this is for hourly data, ie. less than 90 days)
         const results = document.getElementsByClassName("outputBox")
-        const firstHourDatapoints = Object.values(groupedByDate).map(dataPointsForDay => dataPointsForDay[0]);
+        const firstDataPointOfTheDay = Object.values(groupedByDate).map(dataPointsForDay => dataPointsForDay[0]);
         //check if there's data available
-        if (firstHourDatapoints.length > 0) {
-            console.log(firstHourDatapoints)
+        if (firstDataPointOfTheDay.length > 0) {
+            console.log(firstDataPointOfTheDay)
             Object.values(results).forEach(el => el.classList.remove("outputBox-none"))
-            return firstHourDatapoints
+            return firstDataPointOfTheDay
         } else {
             Object.values(results).forEach(el => el.classList.add("outputBox-none"))
             alert("check your dates")

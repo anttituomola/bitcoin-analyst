@@ -9,6 +9,7 @@ document.getElementById("endDateEl").value = dayjs().format("YYYY-MM-DD")
 document.getElementById("submitBtn").addEventListener("click", handler.handleSubmit)
 document.getElementById("startDateEl").addEventListener("keypress", handler.enter)
 document.getElementById("endDateEl").addEventListener("keypress", handler.enter)
+document.getElementById("themeChangerImg").addEventListener("click", handler.themeChanger)
 
 
 
@@ -47,6 +48,7 @@ document.getElementById("endDateEl").addEventListener("keypress", handler.enter)
 //Why do I need static in front of class methods?
 
 //TODO
+//dark theme?
 //Add tests!: https://titanwolf.org/Network/Articles/Article?AID=5bb2e66a-ddb9-4e6e-ba02-a2aa686bc6c6
 //remove eslint and pacgage.json before release
 //update live demo

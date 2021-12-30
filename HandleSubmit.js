@@ -34,10 +34,6 @@ export default class HandleSubmit {
         const endDate = dayjs.utc(endDateEl.value).add(1, "hour")
         const endDateTimestamp = dayjs.utc(endDate) / 1000
         
-        //add class to results fields
-        const results = document.getElementsByClassName("outputBox-none")
-        Object.values(results).forEach(el => el.classList.add("outputBox"))
-        
         //fetch the data from Gecko API
         fetch(`https://api.coingecko.com/api/v3/coins/bitcoin/market_chart/range?vs_currency=eur&from=${startDateTimestamp}&to=${endDateTimestamp}`)
         .then(res => {
@@ -51,4 +47,7 @@ export default class HandleSubmit {
         .then(data => { dataSorter.sortData(data)})
     }
     
+    themeChanger() {
+        document.body.classList.toggle("dark-theme")
+    }
 }
