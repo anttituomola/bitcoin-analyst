@@ -37,7 +37,7 @@ export default class TimeMachine {
             timeMachineEl.innerHTML = `
                     <h3>Time Machine setup</h3>
                     <h1>Buy on ${dayjs.utc(data[buyDateIndex].timestamp).format("DD.MM.YYYY")}</h1>
-                    <h1>Sell on ${dayjs.utc(data[sellDateIndex - 1].timestamp).format("DD.MM.YYYY")}</h1>
+                    <h1>Sell on ${dayjs.utc(data[sellDateIndex].timestamp).format("DD.MM.YYYY")}</h1>
                     <p>Profits: ${Math.round(profits)} €</p>
                     `
         } else {
