@@ -6,26 +6,15 @@ export default class LongestDownfall {
         this.render = this.render.bind(this)
     }
      static longestDownfall(data) {
-        /* let min = 0
-        let max = 1
-        let currentMaxLength = 0
-        while (max < data.length) {
-            if (data[min].value > data[max].value) {
-                currentMaxLength = Math.max(currentMaxLength, max - min)
-            } else {
-                min = max
-            }
-            max++
-        } */
-
         let minIndex = 0
         let maxIndex = 1
         let maxDownfallLength = 0
         let currentDownfallLength = 0
         let difference = 0
         while (maxIndex < data.length) {
+            //compare current date to the next one
             difference = data[maxIndex].value - data[minIndex].value
-            if (difference > 0) {
+            if (difference < 0) {
                 maxIndex++
                 minIndex++
                 currentDownfallLength++

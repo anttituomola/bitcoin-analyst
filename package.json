@@ -1,4 +1,7 @@
 {
+  "jest": {
+    "transform": {}
+  },
   "devDependencies": {
     "eslint": "^8.5.0",
     "jest": "^27.4.5"

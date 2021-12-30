@@ -28,15 +28,14 @@ export default class HandleSubmit {
             startDateEl.value = dayjs("2013-04-28").format("YYYY-MM-DD")
         }
 
-        //get and format data for the API call
+        //get and format data from inputs for the API call
         const startDate = dayjs.utc(startDateEl.value)
         const startDateTimestamp = dayjs.utc(startDate) / 1000
         const endDate = dayjs.utc(endDateEl.value).add(1, "hour")
         const endDateTimestamp = dayjs.utc(endDate) / 1000
-        const amountOfDays = endDate.diff(startDate, "day")
         
         //add class to results fields
-        const results = document.getElementsByClassName("outputBox-hide")
+        const results = document.getElementsByClassName("outputBox-none")
         Object.values(results).forEach(el => el.classList.add("outputBox"))
         
         //fetch the data from Gecko API
@@ -49,7 +48,7 @@ export default class HandleSubmit {
                 throw new Error("Hmm... there's something fishy going on here.")
             }
         })
-        .then(data => { dataSorter.sortData(data, amountOfDays)})
+        .then(data => { dataSorter.sortData(data)})
     }
     
 }

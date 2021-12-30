@@ -4,25 +4,16 @@ import LongestDownfall from "./LongestDownfall.js"
 
 export default class DataSorter {
     //SORT INITIAL DATA
-    sortData(data, amountOfDays) {
+    sortData(data) {
         const totalVolumes = data.total_volumes
         const prices = data.prices
 
-        if (amountOfDays >= 90) {
-            let volumeDataPoints = this.sortDataByDate(totalVolumes)
-            let valueDataPoints = this.sortDataByDate(prices)
-
-            FindSalesPeakDate.findSalesPeakDate(volumeDataPoints)
-            LongestDownfall.longestDownfall(valueDataPoints)
-            TimeMachine.biggegstProfitsFinder(valueDataPoints)
-        } else {
-            let midnightVolumeDatapoints = this.sortDataByDate(totalVolumes)
-            let midnightValueDatapoints = this.sortDataByDate(prices)
-
-            FindSalesPeakDate.findSalesPeakDate(midnightVolumeDatapoints)
-            LongestDownfall.longestDownfall(midnightValueDatapoints)
-            TimeMachine.biggegstProfitsFinder(midnightValueDatapoints)
-        }
+        let volumeDataPoints = this.sortDataByDate(totalVolumes)
+        let valueDataPoints = this.sortDataByDate(prices)
+        
+        FindSalesPeakDate.findSalesPeakDate(volumeDataPoints)
+        LongestDownfall.longestDownfall(valueDataPoints)
+        TimeMachine.biggegstProfitsFinder(valueDataPoints)
     }
 
     sortDataByDate(dataPoints) {
