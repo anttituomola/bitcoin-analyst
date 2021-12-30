@@ -1,10 +1,11 @@
-import DataSorter from "./components/DataSorter.js"
+import DataSorter from "./helpers/DataSorter.js"
 
 export default class HandleSubmit {
     constructor() {
         this.handleSubmit = this.handleSubmit.bind(this)
         this.enter = this.enter.bind(this)
     }
+
     //listen for ENTER key on input fields
     enter(e) {
         if (e.key === "Enter") {
@@ -22,6 +23,7 @@ export default class HandleSubmit {
             alert("That's future, you fool! Will adjust to current realm.")
             endDateEl.value = dayjs().add(1, "hour").format("YYYY-MM-DD")
         }
+        
         // ...too far in the past (before 28.04.2013)
         if (dayjs(startDateEl.value) < dayjs("2013-04-28")) {
             alert("That's too far in Bitcoin history, setting the date to earliet possible date.")
@@ -40,13 +42,13 @@ export default class HandleSubmit {
             if (res.ok) {
                 return res.json()
             } else {
-                Object.values(results).forEach(el => el.classList.add("outputBox-hide"))
                 throw new Error("Hmm... there's something fishy going on here.")
             }
         })
-        .then(data => { dataSorter.sortData(data)})
+        .then(data => dataSorter.sortData(data))
     }
     
+    //Dark theme
     themeChanger() {
         document.body.classList.toggle("dark-theme")
     }

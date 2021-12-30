@@ -1,11 +1,11 @@
 import HandleSubmit from "./HandleSubmit.js"
-const handler = new HandleSubmit
+const handler = new HandleSubmit()
 
-//set initial values to input fields
+// Set initial values to input fields
 document.getElementById("startDateEl").value = dayjs().add(-7, "day").format("YYYY-MM-DD")
 document.getElementById("endDateEl").value = dayjs().format("YYYY-MM-DD")
 
-//listen for inputs
+// Listen for inputs
 document.getElementById("submitBtn").addEventListener("click", handler.handleSubmit)
 document.getElementById("startDateEl").addEventListener("keypress", handler.enter)
 document.getElementById("endDateEl").addEventListener("keypress", handler.enter)
@@ -48,10 +48,10 @@ document.getElementById("themeChangerImg").addEventListener("click", handler.the
 //Why do I need static in front of class methods?
 
 //TODO
-//dark theme?
 //Add tests!: https://titanwolf.org/Network/Articles/Article?AID=5bb2e66a-ddb9-4e6e-ba02-a2aa686bc6c6
 //remove eslint and pacgage.json before release
 //update live demo
+//"Easy to add additional features with additional classes"
 
 //DONE
 //Handle searches over 90 days: done
@@ -70,3 +70,4 @@ document.getElementById("themeChangerImg").addEventListener("click", handler.the
 //Change all functions to class (methods), and separate the rendering parts as individual methods: this also improves testability.: DONE
 //Make sure no results under 2 days is returned: it seems the data granularity stays the same even with single day searches?
 //validate data!: https://coinmarketcap.com/currencies/bitcoin/historical-data/
+//dark theme?: DONE

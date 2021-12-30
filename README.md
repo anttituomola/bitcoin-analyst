@@ -18,6 +18,7 @@ There's a <a href="https://anttituomola.fi/bitcoin-analyst/">live demo</a> avail
   <li>Dayjs for date & time management.</li>
   <li>Gecko API for the data</li>
   <li>CSS keyframes for animation</li>
-  <li>Contains both ES6 Classes and functional components</li>
+  <li>ES6 classes & methods</li>
   <li>Optimised also for smaller screens</li>
+  <li>Dark theme available</li>
 </ul>

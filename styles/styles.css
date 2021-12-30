@@ -107,6 +107,12 @@ button:active {
         margin: 0;
         margin-bottom: 0.25em;
     }
+    #input {
+        flex-direction: column;
+    }
+    button {
+        padding: 1em;
+    }
 }
 
 /* HINT ANIMATIONS */
