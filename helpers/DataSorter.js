@@ -15,6 +15,7 @@ export default class DataSorter {
         TimeMachine.biggegstProfitsFinder(valueDataPoints)
     }
 
+    // TODO: this method is waaaay too long, make it shorter
     groupDataByDate(dataPoints) {
         const INDEX_OF_FIRST_ELEMENT = 0
         const INDEX_OF_SECOND_ELEMENT = 1

@@ -13,6 +13,7 @@ export default class HandleSubmit {
         }
     }
 
+    // TODO: this method is waaaay too long, make it shorter
     handleSubmit() {
         const startDateEl = document.getElementById("startDateEl")
         const endDateEl = document.getElementById("endDateEl")
