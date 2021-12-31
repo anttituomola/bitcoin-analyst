@@ -13,6 +13,7 @@ export default class DataSorter {
         FindSalesPeakDate.findSalesPeakDate(volumeDataPoints)
         LongestDownfall.longestDownfall(valueDataPoints)
         TimeMachine.biggegstProfitsFinder(valueDataPoints)
+        // Add new features here in the future!
     }
 
     // TODO: this method is waaaay too long, make it shorter
