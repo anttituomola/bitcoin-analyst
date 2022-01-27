@@ -22,4 +22,5 @@ There's a <a href="https://anttituomola.fi/bitcoin-analyst/">live demo</a> avail
   <li>Optimised also for smaller screens</li>
   <li>Dark theme available</li>
   <li>Easy to extend: everything is separated, so a new feature can be created with a new class and a single call</li>
+  <li>Also, there is <a href="https://anttituomola.fi/vincit-rising-star-haku/" target="_blank">a blog post</a> about this project: <a href="https://anttituomola.fi/vincit-rising-star-haku/" target="_blank">https://anttituomola.fi/vincit-rising-star-haku/</a></li>
 </ul>
